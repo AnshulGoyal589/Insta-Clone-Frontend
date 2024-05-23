@@ -1,15 +1,13 @@
-/* MainNavigationBar.module.css */
 
-/* Sidebar styles */
 .sidebar {
     width: 16.5vw;
     height: 100vh;
     background-color: black;
     color: white;
-    border: 1px solid white;
+    border-right: 0.1px solid #212529;
     position: fixed;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;  
     align-items: center;
   }
   

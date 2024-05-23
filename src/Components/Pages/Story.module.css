@@ -1,8 +1,8 @@
 .box{
     height:130px;
-    border: 1px solid white;
+    /* border: 1px solid white; */
+    align-items: start;
     display: inline-block;
-    width:82.1vw;
-    margin-left: 16.5vw;
+    width:55vw;
     background-color: black;
 }

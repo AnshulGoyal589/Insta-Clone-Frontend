@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './PostCard.module.css'
 import { AiFillHeart,AiOutlineComment } from 'react-icons/ai';
 import axios from 'axios'
-import { useState } from 'react';
+
 
 const images = require.context('../../images', false, /\.(jpg|jpeg|png)$/);
 const imagePaths = images.keys().reduce((acc, imagePath) => {
@@ -42,7 +42,7 @@ const PostCard = (props) => {
       // Convert the formDataObject to JSON
       const formDataJSON = JSON.stringify(formDataObject);
     
-      const response = await axios.post('http://localhost:8000/auth/updateLikes', formDataJSON, {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}auth/updateLikes`, formDataJSON, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -69,7 +69,7 @@ const PostCard = (props) => {
       // Convert the formDataObject to JSON
       const formDataJSON = JSON.stringify(formDataObject);
     
-      const response = await axios.post('http://localhost:8000/auth/updateLikesn', formDataJSON, {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}auth/updateLikesn`, formDataJSON, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -107,7 +107,7 @@ const PostCard = (props) => {
       }
 
       try {
-        const response = await axios.post('http://localhost:8000/auth/review', reviewData);
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}auth/review`, reviewData);
         console.log('Review successful:', response.data.user);
       } catch (error) {
         console.error('Error during review submission:', error.response ? error.response.data : 'Unknown error');

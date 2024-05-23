@@ -12,7 +12,7 @@ const SearchSend = () => {
         formData.append('input', e.target.input.value);
 
         // try {
-        //     const response = await axios.post('http://localhost:8000/auth/search', formData, {
+        //     const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}auth/search`, formData, {
         //       headers: {
         //         'Content-Type': 'multipart/form-data'
         //       }

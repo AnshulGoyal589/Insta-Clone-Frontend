@@ -6,8 +6,9 @@ import Register from './Components/Authentication/Register'
 import Home from './Components/Pages/Home'
 import Profile from './Components/Pages/Profile'
 import PostSend from './Components/Pages/PostSend';
-import Story from './Components/Pages/Story';
 import SearchSend from './Components/Pages/SearchSend';
+import Suggestion from './Components/Pages/Suggestion';
+
 
 
 const App = () => {
@@ -15,20 +16,29 @@ const App = () => {
   let [userData,setUserData]=useState({});
 
   function setUserDetails(data){
+    localStorage.setItem("userID",data.username);
+    localStorage.setItem("name",data.firstName + data.lastName);
     setUserData(data);
   }
+
+  const userID= localStorage.getItem("userID");
 
   
   return (
     <div >
        <MainNavigationBar userData={userData} />
-       <Routes><Route
+       {/* <AuthProvider> */}
+
+       <Routes>
+        <Route
           path="/"
           element={ 
-            userData.username ? (
-              <div>
-              {userData.username ? <Story/> : null}
-              <Home userData={userData} /></div>
+            userID ? (
+              <div style={{display:'flex'}} >
+              {/* <Story/> */}
+              <Home userData={userData} />
+              <Suggestion/>
+              </div>
             ) : (
               <Login setUserDetails={setUserDetails} />
             )
@@ -39,7 +49,11 @@ const App = () => {
           <Route path="/send" element={<PostSend userData={userData} />} />
           <Route path="/search" element={<SearchSend/>} />
           <Route path="/profile" element={<Profile userData={userData} />} />
+          {/* <Route path="/logout" element={<Logout/>} /> */}
        </Routes>
+
+       {/* </AuthProvider> */}
+
       
     </div>
   )

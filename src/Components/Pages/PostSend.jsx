@@ -16,7 +16,7 @@ const PostSend = (props) => {
     formData.append('id', uuid()); // Append the file
 
     try {
-      const response = await axios.post('http://localhost:8000/auth/send', formData, {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}auth/send`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

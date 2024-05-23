@@ -1,0 +1,19 @@
+.main{
+
+    /* border: 1px solid white; */
+    height: 100vh;
+    width: 29vw;
+    margin-left: 71vw;
+    background-color: black;
+    position:fixed;
+    padding: 3vw;
+
+}
+
+.sugg{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 68%;
+    margin-top: 2vh;
+}

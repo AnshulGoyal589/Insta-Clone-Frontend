@@ -9,12 +9,8 @@ const PostContainer = (props) => {
         <PostCard item={item} imageUrl={item.profilePic} userData={props.userData} fetchData={props.fetchData2} specificComment={props.specificComment}/>
     )    
 
-
-
-
   return (
     <div className={styles.container} >
-
            {abc}
     </div>
   )

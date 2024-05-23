@@ -3,6 +3,7 @@ import styles from './Home.module.css';
 import axios from 'axios';
 import ReviewContainer from './ReviewContainer';
 import PostContainer from './PostContainer';
+import Story from './Story';
 
 
 const Home = (props) => {
@@ -13,9 +14,12 @@ const Home = (props) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   let [i,setI]=useState(0);
+
+  const userID = localStorage.getItem("userID");
+  
   const fetchData2 = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/auth/homePage');
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}auth/homePage`);
       setHomeData(response.data);
       setLoading(false);
     } catch (error) {
@@ -28,7 +32,7 @@ const Home = (props) => {
     // Define an async function to fetch data
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/auth/homePage');
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}auth/homePage`);
         setHomeData(response.data);
         setLoading(false);
       } catch (error) {
@@ -43,7 +47,7 @@ const Home = (props) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/auth/userDetails');
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}auth/userDetails`);
         setUserData(response.data);
         // setLoading(false);
       } catch (error) {
@@ -65,7 +69,7 @@ const Home = (props) => {
     
     
     try {
-    const response = await axios.post('http://localhost:8000/auth/reviewShow', reviewTemp);
+    const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}auth/reviewShow`, reviewTemp);
     setReviewData(response.data);
       console.log('Review successful:', response.data);
     } catch (error) {
@@ -83,9 +87,9 @@ const Home = (props) => {
   return (
     <div className={styles.home}>
 
+      <Story/>
 
-
-      {props.userData.username ?
+      {userID ?
             loading ? (
               <p>Loading...</p>
             ) : error ? (
@@ -100,7 +104,7 @@ const Home = (props) => {
 
       }
            
-           {props.userData.username && i ?
+           {userID && i ?
             loading ? (
               <p>Loading...</p>
             ) : error ? (

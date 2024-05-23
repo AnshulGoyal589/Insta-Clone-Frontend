@@ -27,7 +27,7 @@ const Profile = (props) => {
       console.log("ALPHA TEMP:   ",props.userData);
   
       try {
-        const response = await axios.post('http://localhost:8000/auth/postShow', postTemp);
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}auth/postShow`, postTemp);
         setPostData(response.data);
           console.log('Profile post fething successfull:', response.data);
         } catch (error) {
@@ -50,7 +50,7 @@ const Profile = (props) => {
     // console.log("POST TEMP:   ",postTemp);
 
     try {
-      const response = await axios.post('http://localhost:8000/auth/followShow', followTemp);
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}auth/followShow`, followTemp);
       setFollowers(response.data);
         console.log('Followed successfull:', response.data);
       } catch (error) {
